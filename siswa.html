@@ -1,431 +1,449 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Struktur Kelas PPLG</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Struktur Kelas PPLG</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap");
 
-    :root {
-      --primary: #3b82f6;
-      --accent: #facc15;
-      --light: #f9fafb;
-      --dark: #1e293b;
-    }
+      :root {
+        --primary: #3b82f6;
+        --accent: #facc15;
+        --light: #f9fafb;
+        --dark: #1e293b;
+      }
 
-    * {
-      margin: 0; padding: 0;
-      box-sizing: border-box;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
 
-    body {
-      background: var(--light);
-      color: var(--dark);
-      overflow-x: hidden;
-    }
+      body {
+        background: var(--light);
+        color: var(--dark);
+        overflow-x: hidden;
+      }
 
-    /* Header */
-   #navbar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    padding: 1rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 999;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
-    transition: all 0.4s ease;
-  }
+      /* Header */
+      #navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 999;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+      }
 
-  #navbar.scrolled {
-    background: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  }
+      #navbar.scrolled {
+        background: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
 
-  .logo {
-    font-size: 1.6rem;
-    font-weight: 700;
-    background: linear-gradient(45deg, #3b82f6, #facc15);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+      .logo {
+        font-size: 1.6rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, #3b82f6, #facc15);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-  .logo span {
-    color: #3b82f6;
-  }
+      .logo span {
+        color: #3b82f6;
+      }
 
-  nav a {
-    margin-left: 2rem;
-    text-decoration: none;
-    color: #1e293b;
-    font-weight: 500;
-    position: relative;
-    transition: color 0.3s;
-  }
+      nav a {
+        margin-left: 2rem;
+        text-decoration: none;
+        color: #1e293b;
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s;
+      }
 
-  nav a::after {
-    content: "";
-    position: absolute;
-    left: 0; bottom: -5px;
-    width: 100%; height: 2px;
-    background: #3b82f6;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-  }
+      nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 100%;
+        height: 2px;
+        background: #3b82f6;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
 
-  nav a:hover::after {
-    transform: scaleX(1);
-  }
+      nav a:hover::after {
+        transform: scaleX(1);
+      }
 
-    /* Section */
-    section {
-      padding: 8rem 10% 4rem;
-    }
+      /* Section */
+      section {
+        padding: 8rem 10% 4rem;
+      }
 
-    section h2 {
-      text-align: center;
-      font-size: 2.4rem;
-      margin-bottom: 3rem;
-      color: var(--primary);
-    }
+      section h2 {
+        text-align: center;
+        font-size: 2.4rem;
+        margin-bottom: 3rem;
+        color: var(--primary);
+      }
 
-    /* Profiles Grid */
-    .profiles {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
+      /* Profiles Grid */
+      .profiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
 
-    /* Profile Card */
-    .profile-card {
-      background: white;
-      border-radius: 14px;
-      text-align: center;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      transform: scale(0.8) translateY(50px);
-      opacity: 0;
-      transition: all 0.6s ease, transform 0.3s ease-in-out;
-      position: relative;
-      overflow: hidden;
-    }
+      /* Profile Card */
+      .profile-card {
+        background: white;
+        border-radius: 14px;
+        text-align: center;
+        padding: 2rem 1.5rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        transform: scale(0.8) translateY(50px);
+        opacity: 0;
+        transition: all 0.6s ease, transform 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+      }
 
-    .profile-card.show {
-      transform: scale(1) translateY(0);
-      opacity: 1;
-      animation: bounceIn 0.8s ease;
-    }
+      .profile-card.show {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+        animation: bounceIn 0.8s ease;
+      }
 
-    .profile-card img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      border: 4px solid var(--accent);
-      transition: transform 0.4s ease;
-    }
+      .profile-card img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        border: 4px solid var(--accent);
+        transition: transform 0.4s ease;
+      }
 
-    .profile-card:hover img {
-      transform: scale(1.1) rotate(-2deg);
-    }
+      .profile-card:hover img {
+        transform: scale(1.1) rotate(-2deg);
+      }
 
-    .profile-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
+      .profile-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+      }
 
-    .profile-card p {
-      font-size: 0.95rem;
-      color: #475569;
-    }
+      .profile-card p {
+        font-size: 0.95rem;
+        color: #475569;
+      }
 
-    /* Hover Overlay (deskripsi tugas) */
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(59,130,246,0.9);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 1rem;
-      opacity: 0;
-      transform: translateY(100%);
-      transition: all 0.5s ease;
-      padding: 1rem;
-    }
+      /* Hover Overlay (deskripsi tugas) */
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(59, 130, 246, 0.9);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 1rem;
+        opacity: 0;
+        transform: translateY(100%);
+        transition: all 0.5s ease;
+        padding: 1rem;
+      }
 
-    .profile-card:hover .overlay {
-      opacity: 1;
-      transform: translateY(0);
-    }
+      .profile-card:hover .overlay {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #f1f5f9;
-      margin-top: 4rem;
-      color: #475569;
-    }
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        background: #f1f5f9;
+        margin-top: 4rem;
+        color: #475569;
+      }
 
-    /* Animasi Bounce */
-    @keyframes bounceIn {
-      0%   { transform: scale(0.5); opacity: 0; }
-      60%  { transform: scale(1.1); opacity: 1; }
-      100% { transform: scale(1); }
-    }
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <header id="navbar">
-  <h1 class="logo">PPLG X-2<span>.</span></h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="siswa.html">Siswa</a>
-    <a href="#galeri">Galeri</a>
-  </nav>
-</header>
+      /* Animasi Bounce */
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0.5);
+          opacity: 0;
+        }
+        60% {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="navbar">
+      <h1 class="logo">PPLG X-2<span>.</span></h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="siswa.html">Siswa</a>
+        <a href="#galeri">Galeri</a>
+      </nav>
+    </header>
 
-  <!-- Struktur Kelas -->
-  <section id="struktur">
-    <h2>Bocah-bocah PPLG X-2</h2>
-    <div class="profiles">
-      <div class="profile-card">
-        <img src="#" alt="Ketua">
-        <h3>Ketua Kelas</h3>
-        <p>Nama Ketua Kelas</p>
-        <div class="overlay">Bertanggung jawab memimpin kelas</div>
+    <!-- Struktur Kelas -->
+    <section id="struktur">
+      <h2>Bocah-bocah PPLG X-2</h2>
+      <div class="profiles">
+        <div class="profile-card">
+          <img src="assets/ketua.jpg" alt="Ketua" />
+          <h3>Ketua Kelas</h3>
+          <p>Rafli Yaenal </p>
+          <div class="overlay">selalu semangat ingat tujuanmu</div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/abdur.jpg" alt="Wakil" />
+          <h3>Wakil Ketua</h3>
+          <p>Abdur</p>
+          <div class="overlay">Menjadi pemburu waifu</div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/pipit.jpg" alt="Bendahara" />
+          <h3>Bendahara</h3>
+          <p>Pipit</p>
+          <div class="overlay">Jangan banyak makan yang manis, karna yg manis udah ada disini</div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/iqbal.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Iqbal</p>
+          <div class="overlay">Modol, Hidup cuman sekali</div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/khaliq.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Khaliq</p>
+          <div class="overlay">anjaii</div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/pandu.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Pandu</p>
+          <div class="overlay">Mendukung kegiatan kelas</div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/radit.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Radit</p>
+          <div class="overlay">
+            kamu dengan caramu, aku dengan caraku tertinggal di start belum
+            tentu tidak bisa menggapai finish
+          </div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/satria.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Satria</p>
+          <div class="overlay">Hari Minggu itu weekend tapi kalau cinta kita will never end.</div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/yuni.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Yuni</p>
+          <div class="overlay">masa depanmu tergantung pada apa yang kamu lakukan hari ini</div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/giyas.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay">aku hanya berhasil menjalani hari tanpa mu, tapi perihal menghapus mu dari ingatan ku, aku segagal itu.</div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/nisa.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nisa</p>
+          <div class="overlay">apa yang kalian harapkan dari bereskpetasi ke sesama manusia</div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/ubes.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Fauzan</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/aldi.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Aldi</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/agha.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Agha</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/faiz.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Faiz</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/fadlan.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Fadlan</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="assets/aloy.jpg" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Ali</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
+        <div class="profile-card">
+          <img src="" alt="Anggota" />
+          <h3>Anggota</h3>
+          <p>Nama Anggota 3</p>
+          <div class="overlay"></div>
+        </div>
       </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?student,smile" alt="Wakil">
-        <h3>Wakil Ketua</h3>
-        <p>Nama Wakil Ketua</p>
-        <div class="overlay">Mendampingi ketua dan koordinasi</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?woman,office" alt="Bendahara">
-        <h3>Seketaris</h3>
-        <p>Nama Bendahara</p>
-        <div class="overlay">Mengatur keuangan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="#" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 1</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?girl,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 2</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="#" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-      <div class="profile-card">
-        <img src="https://source.unsplash.com/200x200/?boy,student" alt="Anggota">
-        <h3>Anggota</h3>
-        <p>Nama Anggota 3</p>
-        <div class="overlay">Mendukung kegiatan kelas</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Kelas PPLG | Struktur Organisasi
-  </footer>
+    <!-- Footer -->
+    <footer>&copy; 2025 Kelas PPLG | Struktur Organisasi</footer>
 
-  <!-- Animasi Scroll -->
-  <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
+    <!-- Animasi Scroll -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      document
+        .querySelectorAll(".profile-card")
+        .forEach((el) => observer.observe(el));
+
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
         }
       });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll(".profile-card")
-      .forEach(el => observer.observe(el));
-
-       window.addEventListener("scroll", () => {
-    const navbar = document.getElementById("navbar");
-    if (window.scrollY > 50) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-     });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

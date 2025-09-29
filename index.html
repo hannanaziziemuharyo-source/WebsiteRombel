@@ -221,6 +221,60 @@
       .card:hover {
         transform: translateY(-10px) scale(1.03);
       }
+
+      /* gallery */
+      .gallery-container {
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .gallery-container h2 {
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 2rem;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+      }
+
+      .gallery img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* Efek hover dengan keyframes */
+      .gallery img:hover {
+        animation: bounce 0.6s ease-in-out infinite alternate;
+      }
+
+      /* Keyframes */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes bounce {
+        from {
+          transform: scale(1) translateY(0);
+        }
+        to {
+          transform: scale(1.05) translateY(-10px);
+        }
+      }
       /* Footer */
       footer {
         text-align: center;
@@ -270,8 +324,7 @@
         >
       </div>
       <div class="hero-img">
-        <!-- pastiin file foto ada di folder yang sama, kalau di folder img ubah jadi src="img/WIN_20250923_07_27_49_Pro.jpg" -->
-        <img src="assets/Screenshot_2025-09-29_095429-removebg-preview.png" alt="Foto Anak Kelas" />
+        <img src="assets/logo-removebg-preview.png" alt="Foto Anak Kelas" />
       </div>
     </section>
 
@@ -280,21 +333,40 @@
       <h2>Kenapa Kita Ada</h2>
       <div class="cards">
         <div class="card">
-          <h3>Kekompakan</h3>
+          <h3>Kenapa kita hadir?</h3>
           <p>
-            Kita ada untuk saling support, bikin kelas jadi rumah kedua, dan
-            tumbuh bareng sebagai satu keluarga PPLG X-2.
+            Karena dunia ini butuh seimbang: ada terang, ada gelap, ada serius,
+            ada santai, dan ada kelas yang katanya belajar pemrograman tapi
+            isinya kadang malah stand up comedy gratis. PPLG X-2 lahir bukan
+            sekadar kelas, tapi sebagai bukti kalau coding bisa berjalan bareng
+            ketawa receh, tugas bisa dikerjakan bareng panik massal, dan ujian
+            itu sebenarnya cuma ajang latihan “survive”. Singkatnya, kita ada
+            biar sekolah nggak terlalu sepi soalnya tanpa kita, siapa lagi yang
+            bikin guru geleng kepala tapi tetep sayang?
           </p>
         </div>
         <div class="card">
-          <h3>Kreativitas</h3>
+          <h3>Goals Kita</h3>
           <p>
-            Kita hadir dengan ide-ide fresh, ngembangin skill coding, desain,
-            dan karya digital yang gokil.
+            Tujuan kita sederhana tapi mulia: lulus bareng-bareng tanpa ada yang
+            jadi legenda angkatan karena tinggal kelas. Kita pengen jago coding,
+            tapi nggak lupa jago ngaret. Punya skill desain, tapi desainnya
+            kadang lebih cocok jadi meme. Goal utama sih jelas jadi angkatan
+            yang dikenal, bukan karena prestasi akademik doang, tapi karena
+            berhasil bikin sejarah “kelas paling rame tapi tetap kompak”.
           </p>
         </div>
       </div>
     </section>
+
+    <!-- gallery -->
+    <div class="gallery-container">
+      <h2>Gallery PPLG X-2</h2>
+      <div class="gallery">
+        <img src="assets/barengan.jpg" alt="Foto Kegiatan 1" />
+        <img src="assets/barengan2.jpg" alt="Foto Kegiatan 2" />
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer>&copy; 2025 Kelas PPLG | Dibuat dengan ❤️ oleh Anak PPLG</footer>
