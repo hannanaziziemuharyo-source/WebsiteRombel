@@ -1,280 +1,333 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kelas PPLG</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelas PPLG</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap");
 
-    :root {
-      --primary: #3b82f6;   /* biru */
-      --accent: #facc15;    /* kuning cerah */
-      --light: #f9fafb;     /* putih terang */
-      --dark: #1e293b;      /* teks abu gelap */
-    }
+      :root {
+        --primary: #3b82f6; /* biru */
+        --accent: #facc15; /* kuning cerah */
+        --light: #f9fafb; /* putih terang */
+        --dark: #1e293b; /* teks abu gelap */
+      }
 
-    * {
-      margin: 0; padding: 0;
-      box-sizing: border-box;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
 
-    body {
-      background: var(--light);
-      color: var(--dark);
-      overflow-x: hidden;
-    }
+      body {
+        background: var(--light);
+        color: var(--dark);
+        overflow-x: hidden;
+      }
 
-    /* Navbar */
-   /* Header Modern */
-  #navbar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    padding: 1rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 999;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
-    transition: all 0.4s ease;
-  }
+      /* Navbar */
+      /* Header Modern */
+      #navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 999;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+      }
 
-  #navbar.scrolled {
-    background: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  }
+      #navbar.scrolled {
+        background: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
 
-  .logo {
-    font-size: 1.6rem;
-    font-weight: 700;
-    background: linear-gradient(45deg, #3b82f6, #facc15);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+      .logo {
+        font-size: 1.6rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, #3b82f6, #facc15);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-  .logo span {
-    color: #3b82f6;
-  }
+      .logo span {
+        color: #3b82f6;
+      }
 
-  nav a {
-    margin-left: 2rem;
-    text-decoration: none;
-    color: #1e293b;
-    font-weight: 500;
-    position: relative;
-    transition: color 0.3s;
-  }
+      nav a {
+        margin-left: 2rem;
+        text-decoration: none;
+        color: #1e293b;
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s;
+      }
 
-  nav a::after {
-    content: "";
-    position: absolute;
-    left: 0; bottom: -5px;
-    width: 100%; height: 2px;
-    background: #3b82f6;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-  }
+      nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 100%;
+        height: 2px;
+        background: #3b82f6;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
 
-  nav a:hover::after {
-    transform: scaleX(1);
-  }
-    /* Hero */
-    .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8rem 10%;
-    background: linear-gradient(135deg, #e0f2fe, #fef9c3);
-    gap: 2rem;
-  }
+      nav a:hover::after {
+        transform: scaleX(1);
+      }
+      /* Hero */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8rem 10%;
+        background: linear-gradient(135deg, #e0f2fe, #fef9c3);
+        gap: 2rem;
+      }
 
-  .hero-text {
-    flex: 1;
-    animation: slideLeft 1s ease forwards;
-  }
+      .hero-text {
+        flex: 1;
+        animation: slideLeft 1s ease forwards;
+      }
 
-  .hero-text h2 {
-    font-size: 3rem;
-    color: #3b82f6;
-    margin-bottom: 1rem;
-  }
+      .hero-text h2 {
+        font-size: 3rem;
+        color: #3b82f6;
+        margin-bottom: 1rem;
+      }
 
-  .hero-text p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    color: #334155;
-  }
+      .hero-text p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: #334155;
+      }
 
-  .btn {
-    padding: 0.8rem 2rem;
-    background: #facc15;
-    border-radius: 8px;
-    color: #1e293b;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.3s;
-  }
+      .btn {
+        padding: 0.8rem 2rem;
+        background: #facc15;
+        border-radius: 8px;
+        color: #1e293b;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.3s;
+        display: inline-block;
+      }
 
-  .btn:hover {
-    transform: scale(1.05) rotate(-2deg);
-  }
+      /* Hover pakai animasi keyframes */
+      .btn:hover {
+        animation: wiggle 0.4s ease-in-out;
+        transform: scale(1.05) rotate(-2deg);
+      }
 
-  .hero-img {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
+      /* Keyframes wiggle */
+      @keyframes wiggle {
+        0% {
+          transform: scale(1) rotate(0deg);
+        }
+        25% {
+          transform: scale(1.05) rotate(-2deg);
+        }
+        50% {
+          transform: scale(0.97) rotate(2deg);
+        }
+        75% {
+          transform: scale(1.03) rotate(-1deg);
+        }
+        100% {
+          transform: scale(1.05) rotate(-2deg);
+        }
+      }
 
-  .hero-img img {
-    max-width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-    transform: scale(0.8);
-    opacity: 0;
-    transition: all 1s ease;
-  }
+      .hero-img {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
 
-  .hero-img img.show {
-    opacity: 1;
-    transform: scale(1);
-  }
+      .hero-img img {
+        max-width: 100%;
+        border-radius: 16px;
+        transform: scale(0.8);
+        opacity: 0;
+        transition: all 1s ease;
+      }
 
-  @keyframes slideLeft {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
+      .hero-img img.show {
+        opacity: 1;
+        transform: scale(1);
+      }
 
-    /* Section */
-    section {
-      padding: 6rem 10%;
-    }
+      @keyframes slideLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-    section h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 3rem;
-      color: var(--primary);
-    }
+      /* Section */
+      section {
+        padding: 6rem 10%;
+      }
 
-   #kenapa-kita-ada {
-  padding: 6rem 10%;
-  background: linear-gradient(135deg, #fffbe6, #e0f2fe);
-}
+      section h2 {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 3rem;
+        color: var(--primary);
+      }
 
-#kenapa-kita-ada h2 {
-  text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 3rem;
-  color: #3b82f6;
-}
+      #kenapa-kita-ada {
+        padding: 6rem 10%;
+        background: linear-gradient(135deg, #fffbe6, #e0f2fe);
+      }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
+      #kenapa-kita-ada h2 {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 3rem;
+        color: #3b82f6;
+      }
 
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
-}
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
 
-.card:hover {
-  transform: translateY(-10px) scale(1.03);
-}
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #f1f5f9;
-      color: #475569;
-      margin-top: 4rem;
-    }
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
 
-    /* Keyframes */
-    @keyframes slideLeft {
-      from { opacity: 0; transform: translateX(-50px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <header id="navbar">
-  <h1 class="logo">PPLG X-2<span></span></h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="siswa.html">Siswa</a>
-    <a href="#galeri">Galeri</a>
-  </nav>
-</header>
+      .card:hover {
+        transform: translateY(-10px) scale(1.03);
+      }
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        background: #f1f5f9;
+        color: #475569;
+        margin-top: 4rem;
+      }
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-  <div class="hero-text">
-    <h2>PPLG X-2</h2>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis libero unde aperiam, ut porro quisquam aut in sit doloribus velit, autem minus facere facilis consequatur veritatis repellendus esse, necessitatibus atque.</p>
-    <a href="https://www.instagram.com/pplg.xtwo__/" class="btn">Kenali Kami</a>
-  </div>
-  <div class="hero-img">
-    <!-- pastiin file foto ada di folder yang sama, kalau di folder img ubah jadi src="img/WIN_20250923_07_27_49_Pro.jpg" -->
-    <img src="#" alt="Foto Anak Kelas">
-  </div>
-</section>
+      /* Keyframes */
+      @keyframes slideLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="navbar">
+      <h1 class="logo">PPLG X-2<span></span></h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="siswa.html">Siswa</a>
+        <a href="#galeri">Galeri</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <h2>PPLG X-2</h2>
+        <p>
+          PPLG X 2 adalah salah satu kelas dari jurusan Pengembangan Perangkat
+          Lunak dan Gim (PPLG) yang berisi siswa-siswi kreatif, inovatif, dan
+          bersemangat dalam bidang teknologi. Di kelas ini, setiap anggota
+          belajar dan berkembang bersama untuk menguasai keterampilan
+          pemrograman, desain aplikasi, serta pengembangan gim yang modern.
+        </p>
+        <a href="https://www.instagram.com/pplg.xtwo__/" class="btn"
+          >Kenali Kami</a
+        >
+      </div>
+      <div class="hero-img">
+        <!-- pastiin file foto ada di folder yang sama, kalau di folder img ubah jadi src="img/WIN_20250923_07_27_49_Pro.jpg" -->
+        <img src="assets/Screenshot_2025-09-29_095429-removebg-preview.png" alt="Foto Anak Kelas" />
+      </div>
+    </section>
 
     <!-- kenapa kita ada -->
-  <section id="kenapa-kita-ada">
-  <h2>Kenapa Kita Ada</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Kekompakan</h3>
-      <p>Kita ada untuk saling support, bikin kelas jadi rumah kedua, dan tumbuh bareng sebagai satu keluarga PPLG X-2.</p>
-    </div>
-    <div class="card">
-      <h3>Kreativitas</h3>
-      <p>Kita hadir dengan ide-ide fresh, ngembangin skill coding, desain, dan karya digital yang gokil.</p>
-    </div>
-  </div>
-</section>
+    <section id="kenapa-kita-ada">
+      <h2>Kenapa Kita Ada</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Kekompakan</h3>
+          <p>
+            Kita ada untuk saling support, bikin kelas jadi rumah kedua, dan
+            tumbuh bareng sebagai satu keluarga PPLG X-2.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Kreativitas</h3>
+          <p>
+            Kita hadir dengan ide-ide fresh, ngembangin skill coding, desain,
+            dan karya digital yang gokil.
+          </p>
+        </div>
+      </div>
+    </section>
 
+    <!-- Footer -->
+    <footer>&copy; 2025 Kelas PPLG | Dibuat dengan ❤️ oleh Anak PPLG</footer>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Kelas PPLG | Dibuat dengan ❤️ oleh Anak PPLG
-  </footer>
+    <!-- JS Animations -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
 
-  <!-- JS Animations -->
-  <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll(".hero-img img, .card, .gallery img")
-      .forEach(el => observer.observe(el));
+      document
+        .querySelectorAll(".hero-img img, .card, .gallery img")
+        .forEach((el) => observer.observe(el));
 
       window.addEventListener("scroll", () => {
-    const navbar = document.getElementById("navbar");
-    if (window.scrollY > 50) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  });
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
 
-   window.addEventListener("load", () => {
-    document.querySelector(".hero-img img").classList.add("show");
-   });
-  </script>
-</body>
+      window.addEventListener("load", () => {
+        document.querySelector(".hero-img img").classList.add("show");
+      });
+    </script>
+  </body>
 </html>
