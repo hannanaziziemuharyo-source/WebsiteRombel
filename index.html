@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kelas PPLG</title>
+    <title>PPLG X-2 | The Next Level</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap");
 
@@ -25,10 +25,10 @@
         background: var(--light);
         color: var(--dark);
         overflow-x: hidden;
+        scroll-behavior: smooth;
       }
 
       /* Navbar */
-      /* Header Modern */
       #navbar {
         position: fixed;
         top: 0;
@@ -39,137 +39,111 @@
         justify-content: space-between;
         align-items: center;
         z-index: 999;
-        background: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
         transition: all 0.4s ease;
       }
 
       #navbar.scrolled {
-        background: white;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
       }
 
       .logo {
-        font-size: 1.6rem;
-        font-weight: 700;
-        background: linear-gradient(45deg, #3b82f6, #facc15);
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        letter-spacing: 1px;
+        animation: glowText 2s ease-in-out infinite alternate;
       }
 
-      .logo span {
-        color: #3b82f6;
+      @keyframes glowText {
+        from {
+          text-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+        }
+        to {
+          text-shadow: 0 0 25px rgba(250, 204, 21, 0.9);
+        }
       }
 
       nav a {
         margin-left: 2rem;
         text-decoration: none;
-        color: #1e293b;
-        font-weight: 500;
+        color: var(--dark);
+        font-weight: 600;
         position: relative;
-        transition: color 0.3s;
+        transition: 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--primary);
       }
 
       nav a::after {
         content: "";
         position: absolute;
         left: 0;
-        bottom: -5px;
+        bottom: -4px;
         width: 100%;
         height: 2px;
-        background: #3b82f6;
+        background: var(--primary);
         transform: scaleX(0);
-        transform-origin: left;
         transition: transform 0.3s ease;
+        transform-origin: right;
       }
 
       nav a:hover::after {
         transform: scaleX(1);
+        transform-origin: left;
       }
-      /* Hero */
+
+      /* Hero Section */
       .hero {
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 8rem 10%;
-        background: linear-gradient(135deg, #e0f2fe, #fef9c3);
-        gap: 2rem;
+        background: radial-gradient(circle at top right, #e0f2fe, #fef9c3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.3),
+          transparent
+        );
+        top: -100px;
+        right: -100px;
+        border-radius: 50%;
+        animation: floatGlow 6s ease-in-out infinite alternate;
+      }
+
+      @keyframes floatGlow {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(40px);
+        }
       }
 
       .hero-text {
         flex: 1;
-        animation: slideLeft 1s ease forwards;
+        z-index: 2;
+        animation: fadeSlide 1s ease forwards;
       }
 
-      .hero-text h2 {
-        font-size: 3rem;
-        color: #3b82f6;
-        margin-bottom: 1rem;
-      }
-
-      .hero-text p {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        color: #334155;
-      }
-
-      .btn {
-        padding: 0.8rem 2rem;
-        background: #facc15;
-        border-radius: 8px;
-        color: #1e293b;
-        font-weight: 600;
-        text-decoration: none;
-        transition: transform 0.3s;
-        display: inline-block;
-      }
-
-      /* Hover pakai animasi keyframes */
-      .btn:hover {
-        animation: wiggle 0.4s ease-in-out;
-        transform: scale(1.05) rotate(-2deg);
-      }
-
-      /* Keyframes wiggle */
-      @keyframes wiggle {
-        0% {
-          transform: scale(1) rotate(0deg);
-        }
-        25% {
-          transform: scale(1.05) rotate(-2deg);
-        }
-        50% {
-          transform: scale(0.97) rotate(2deg);
-        }
-        75% {
-          transform: scale(1.03) rotate(-1deg);
-        }
-        100% {
-          transform: scale(1.05) rotate(-2deg);
-        }
-      }
-
-      .hero-img {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-      }
-
-      .hero-img img {
-        max-width: 100%;
-        border-radius: 16px;
-        transform: scale(0.8);
-        opacity: 0;
-        transition: all 1s ease;
-      }
-
-      .hero-img img.show {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      @keyframes slideLeft {
+      @keyframes fadeSlide {
         from {
           opacity: 0;
           transform: translateX(-50px);
@@ -177,6 +151,71 @@
         to {
           opacity: 1;
           transform: translateX(0);
+        }
+      }
+
+      .hero-text h2 {
+        font-size: 3.5rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+        animation: typing 4s steps(30, end) infinite alternate;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid var(--accent);
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      .hero-text p {
+        font-size: 1.1rem;
+        color: #334155;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .btn {
+        padding: 1rem 2.4rem;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        border-radius: 50px;
+        color: white;
+        font-weight: 700;
+        text-decoration: none;
+        transition: 0.4s ease;
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+      }
+
+      .btn:hover {
+        transform: scale(1.08) rotate(-2deg);
+        box-shadow: 0 0 30px rgba(250, 204, 21, 0.7);
+      }
+
+      .hero-img {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        z-index: 2;
+      }
+
+      .hero-img img {
+        width: 90%;
+        filter: drop-shadow(0 10px 40px rgba(59, 130, 246, 0.4));
+        transform: translateY(0);
+        animation: floatUpDown 4s ease-in-out infinite alternate;
+      }
+
+      @keyframes floatUpDown {
+        0% {
+          transform: translateY(0) rotate(0deg);
+        }
+        100% {
+          transform: translateY(-30px) rotate(1deg);
         }
       }
 
@@ -187,223 +226,677 @@
 
       section h2 {
         text-align: center;
-        font-size: 2.2rem;
-        margin-bottom: 3rem;
+        font-size: 2.5rem;
         color: var(--primary);
+        margin-bottom: 3rem;
+        animation: fadeIn 1s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       #kenapa-kita-ada {
-        padding: 6rem 10%;
-        background: linear-gradient(135deg, #fffbe6, #e0f2fe);
-      }
-
-      #kenapa-kita-ada h2 {
-        text-align: center;
-        font-size: 2.2rem;
-        margin-bottom: 3rem;
-        color: #3b82f6;
+        background: linear-gradient(120deg, #fffbe6, #e0f2fe);
       }
 
       .cards {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
       }
 
       .card {
-        background: white;
-        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 16px;
         padding: 2rem;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(12px);
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
       }
 
       .card:hover {
-        transform: translateY(-10px) scale(1.03);
+        transform: rotate(-1deg) translateY(-15px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
       }
 
-      /* gallery */
+      .card h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      .card p {
+        color: #475569;
+        line-height: 1.6;
+      }
+
+      /* ===== GALLERY GOKIL ===== */
       .gallery-container {
         text-align: center;
-        padding: 40px 20px;
+        padding: 6rem 2rem;
+        background: linear-gradient(180deg, #fef9c3, #e0f2fe);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .gallery-container::before {
+        content: "";
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        top: -200px;
+        right: -200px;
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.3),
+          transparent
+        );
+        border-radius: 50%;
+        animation: glowMove 8s ease-in-out infinite alternate;
+        z-index: 0;
+      }
+
+      @keyframes glowMove {
+        from {
+          transform: translateY(0);
+          opacity: 0.8;
+        }
+        to {
+          transform: translateY(40px);
+          opacity: 0.4;
+        }
       }
 
       .gallery-container h2 {
-        margin-bottom: 20px;
-        color: #333;
-        font-size: 2rem;
+        font-size: 2.8rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 2;
       }
 
       .gallery {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+        position: relative;
+        z-index: 2;
       }
 
-      .gallery img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      .photo-card {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+        transition: transform 0.6s ease, box-shadow 0.6s ease;
         cursor: pointer;
-        animation: fadeIn 1s ease forwards;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
       }
 
-      /* Efek hover dengan keyframes */
-      .gallery img:hover {
-        animation: bounce 0.6s ease-in-out infinite alternate;
+      .photo-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1);
+        transition: transform 0.7s ease, filter 0.4s ease;
       }
 
-      /* Keyframes */
-      @keyframes fadeIn {
+      .photo-card:hover img {
+        transform: scale(1.2) rotate(2deg);
+        filter: brightness(1.2) saturate(1.4);
+      }
+
+      /* .photo-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        border: 2px solid transparent;
+        background: linear-gradient(45deg, #3b82f6, #facc15, #3b82f6);
+        background-size: 300%;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.5s ease, background-position 1s ease;
+      } */
+
+      .photo-card:hover::after {
+        opacity: 1;
+        background-position: 200%;
+        animation: borderGlow 3s linear infinite;
+      }
+
+      @keyframes borderGlow {
+        0% {
+          background-position: 0%;
+        }
+        100% {
+          background-position: 200%;
+        }
+      }
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        border-radius: 20px;
+        padding-bottom: 1.5rem;
+      }
+
+      .photo-card:hover .overlay {
+        opacity: 1;
+      }
+
+      .overlay h3 {
+        color: white;
+        font-size: 1.2rem;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        transform: translateY(20px);
+        animation: popText 0.6s ease forwards;
+      }
+
+      @keyframes popText {
         from {
+          transform: translateY(20px);
           opacity: 0;
-          transform: scale(0.9);
         }
         to {
+          transform: translateY(0);
           opacity: 1;
-          transform: scale(1);
         }
       }
 
-      @keyframes bounce {
-        from {
-          transform: scale(1) translateY(0);
-        }
-        to {
-          transform: scale(1.05) translateY(-10px);
-        }
+      /* Efek parallax 3D saat hover */
+      .photo-card:hover {
+        transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+        box-shadow: 0 25px 50px rgba(59, 130, 246, 0.3);
       }
-      /* Footer */
-      footer {
+
+      /* ===== JADWAL GOKIL SECTION ===== */
+      .schedule-section {
+        padding: 6rem 2rem;
         text-align: center;
-        padding: 2rem;
-        background: #f1f5f9;
-        color: #475569;
-        margin-top: 4rem;
+        background: linear-gradient(180deg, #e0f2fe, #fef9c3);
+        position: relative;
+        overflow: hidden;
       }
 
-      /* Keyframes */
-      @keyframes slideLeft {
+      .schedule-section h2 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+      }
+
+      .schedule-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        overflow-x: auto;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        border: 2px solid transparent;
+        background-image: linear-gradient(#ffffff33, #ffffff33),
+          linear-gradient(90deg, #3b82f6, #facc15, #3b82f6);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        animation: borderShift 6s linear infinite;
+      }
+
+      @keyframes borderShift {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 300% 0;
+        }
+      }
+
+      .schedule-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1rem;
+        color: #1e293b;
+        overflow: hidden;
+      }
+
+      .schedule-table thead {
+        background: linear-gradient(90deg, #3b82f6, #facc15);
+        color: white;
+        font-weight: bold;
+      }
+
+      .schedule-table th,
+      .schedule-table td {
+        padding: 1rem 1.2rem;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .schedule-table tbody tr {
+        transition: all 0.3s ease;
+      }
+
+      .schedule-table tbody tr:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(59, 130, 246, 0.1),
+          rgba(250, 204, 21, 0.1)
+        );
+        transform: scale(1.03);
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        color: #0f172a;
+      }
+
+      /* efek glowing di sekitar tabel */
+      .schedule-section::before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(250, 204, 21, 0.2),
+          transparent
+        );
+        bottom: -150px;
+        left: -100px;
+        z-index: 0;
+        animation: glowMove2 7s ease-in-out infinite alternate;
+      }
+
+      @keyframes glowMove2 {
+        from {
+          transform: translateY(0);
+          opacity: 0.6;
+        }
+        to {
+          transform: translateY(30px);
+          opacity: 0.3;
+        }
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+      .box:hover {
+        transform: scale(1.1) rotate(2deg);
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+      }
+      .emoji {
+        font-size: 60px;
+        animation: bounce 1.5s infinite;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* ===== FOOTER MODERN PROFESSIONAL ===== */
+      .footer {
+        position: relative;
+        background: linear-gradient(135deg, #ffffff, #f0f4ff);
+        color: #1e293b;
+        padding: 5rem 10% 2rem;
+        overflow: hidden;
+      }
+
+      .footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        height: 2px;
+        background: linear-gradient(90deg, #3b82f6, #facc15, #3b82f6);
+        background-size: 300%;
+        animation: footerLine 6s linear infinite;
+        border-radius: 4px;
+      }
+
+      @keyframes footerLine {
+        0% {
+          background-position: 0%;
+        }
+        100% {
+          background-position: 200%;
+        }
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 3rem;
+        align-items: start;
+        position: relative;
+        z-index: 2;
+      }
+
+      .footer-brand h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        background: linear-gradient(90deg, #3b82f6, #facc15);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+      }
+
+      .footer-brand p {
+        color: #475569;
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .footer-links h3,
+      .footer-contact h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #0f172a;
+        margin-bottom: 1rem;
+        position: relative;
+      }
+
+      .footer-links h3::after,
+      .footer-contact h3::after {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: linear-gradient(90deg, #3b82f6, #facc15);
+        border-radius: 2px;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links a {
+        color: #475569;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 0.6rem;
+        transition: 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #3b82f6;
+        transform: translateX(6px);
+      }
+
+      .footer-contact p {
+        font-size: 0.95rem;
+        color: #475569;
+        margin: 0.4rem 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-contact i {
+        color: #3b82f6;
+        margin-right: 8px;
+        font-size: 1.1rem;
+      }
+
+      .social-icons {
+        margin-top: 1rem;
+      }
+
+      .social-icons a {
+        color: #1e293b;
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        transition: 0.3s ease;
+        display: inline-block;
+      }
+
+      .social-icons a:hover {
+        transform: translateY(-4px) scale(1.2);
+        color: #3b82f6;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #e2e8f0;
+        margin-top: 3rem;
+        text-align: center;
+        padding-top: 1.5rem;
+        color: #64748b;
+        font-size: 0.9rem;
+        position: relative;
+      }
+
+      .footer-bottom p {
+        animation: fadeUp 1.5s ease forwards;
+      }
+
+      @keyframes fadeUp {
         from {
           opacity: 0;
-          transform: translateX(-50px);
+          transform: translateY(15px);
         }
         to {
           opacity: 1;
-          transform: translateX(0);
+          transform: translateY(0);
         }
       }
     </style>
   </head>
   <body>
-    <!-- Header -->
     <header id="navbar">
-      <h1 class="logo">PPLG X-2<span></span></h1>
+      <h1 class="logo">PPLG X-2</h1>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="siswa.html">Siswa</a>
+        <a href="#home">Home</a>
+        <a href="#kenapa-kita-ada">About</a>
         <a href="#galeri">Galeri</a>
+        <a href="siswa.html">PPLG X 2</a>
       </nav>
     </header>
 
-    
     <section class="hero" id="home">
       <div class="hero-text">
         <h2>PPLG X-2</h2>
         <p>
-          PPLG X 2 adalah salah satu kelas dari jurusan Pengembangan Perangkat
-          Lunak dan Gim (PPLG) yang berisi siswa-siswi kreatif, inovatif, dan
-          bersemangat dalam bidang teknologi. Di kelas ini, setiap anggota
-          belajar dan berkembang bersama untuk menguasai keterampilan
-          pemrograman, desain aplikasi, serta pengembangan gim yang modern.
+          PPLG X-2 isn’t just a class — it’s a vibe. Full of creative, funny,
+          and passionate students who mix technology with laughter. From coding
+          chaos to inside jokes, this is where skill meets chaos in the best way
+          possible.
         </p>
         <a href="https://www.instagram.com/pplg.xtwo__/" class="btn"
-          >Kenali Kami</a
+          >Join the Chaos 🚀</a
         >
       </div>
       <div class="hero-img">
-        <img src="assets/logo-removebg-preview.png" alt="Foto Anak Kelas" />
+        <img src="assets/logo-removebg-preview.png" alt="Foto Kelas PPLG X-2" />
       </div>
     </section>
 
-    
     <section id="kenapa-kita-ada">
-      <h2>Kenapa Kita Ada</h2>
+      <h2>Kenapa Kita Ada?</h2>
       <div class="cards">
         <div class="card">
-          <h3>Kenapa kita hadir?</h3>
+          <h3>Karena Dunia Butuh Kita 😎</h3>
           <p>
-            Karena dunia ini butuh seimbang: ada terang, ada gelap, ada serius,
-            ada santai, dan ada kelas yang katanya belajar pemrograman tapi
-            isinya kadang malah stand up comedy gratis. PPLG X-2 lahir bukan
-            sekadar kelas, tapi sebagai bukti kalau coding bisa berjalan bareng
-            ketawa receh, tugas bisa dikerjakan bareng panik massal, dan ujian
-            itu sebenarnya cuma ajang latihan “survive”. Singkatnya, kita ada
-            biar sekolah nggak terlalu sepi soalnya tanpa kita, siapa lagi yang
-            bikin guru geleng kepala tapi tetep sayang?
+            Dunia coding terlalu serius tanpa tawa dari PPLG X-2. Kita hadir
+            buat buktiin kalau logic error bisa dihadapi bareng tawa dan panik
+            massal. Bukan cuma ngoding, tapi juga ngocok perut.
           </p>
         </div>
         <div class="card">
-          <h3>Goals Kita</h3>
+          <h3>Goals Kita 🚀</h3>
           <p>
-            Tujuan kita sederhana tapi mulia: lulus bareng-bareng tanpa ada yang
-            jadi legenda angkatan karena tinggal kelas. Kita pengen jago coding,
-            tapi nggak lupa jago ngaret. Punya skill desain, tapi desainnya
-            kadang lebih cocok jadi meme. Goal utama sih jelas jadi angkatan
-            yang dikenal, bukan karena prestasi akademik doang, tapi karena
-            berhasil bikin sejarah “kelas paling rame tapi tetap kompak”.
+            Bukan cuma pengen jago programming, tapi juga pengen jago ngatur
+            hidup yang penuh deadline. Kita mau lulus bareng, sukses bareng, dan
+            tetap jadi cerita paling gokil di sekolah.
           </p>
         </div>
       </div>
     </section>
 
-    
-    <div class="gallery-container">
+    <div class="gallery-container" id="galeri">
       <h2>Gallery PPLG X-2</h2>
+      <p style="color: #475569; max-width: 700px; margin: 0 auto 3rem">
+        Sekumpulan momen paling gokil, random, tapi penuh kenangan. Di sinilah
+        tawa, panik, dan solidaritas bersatu.
+      </p>
+
       <div class="gallery">
-        <img src="assets/ramean.jpg" alt="Foto Kegiatan 1" />
-        <img src="assets/ramean2.jpg" alt="Foto Kegiatan 2" />
-      </div>
-      <br>
-      <div class="gallery">
-        <img src="assets/kelas.jpg" alt="Foto Kegiatan 1" />
-        <img src="assets/kelas2.jpg" alt="Foto Kegiatan 2" />
+        <div class="photo-card">
+          <img src="assets/ramean.jpg" alt="Kegiatan 1" />
+          <div class="overlay">
+            <h3>Ramean Waktu Istirahat</h3>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="assets/ramean2.jpg" alt="Kegiatan 2" />
+          <div class="overlay">
+            <h3>Belajar atau Ngobrol?</h3>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="assets/kelas.jpg" alt="Kegiatan 3" />
+          <div class="overlay">
+            <h3>Kelas PPLG X-2 Full Team</h3>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="assets/kelas2.jpg" alt="Kegiatan 4" />
+          <div class="overlay">
+            <h3>Moment Random Tapi Berkesan</h3>
+          </div>
+        </div>
       </div>
     </div>
 
-    
-    <footer>&copy; 2025 Kelas PPLG | Dibuat dengan ❤️ oleh Amuhhh🤙</footer>
+    <section class="schedule-section" id="jadwal">
+      <h2>📅 Jadwal Gokil PPLG X-2</h2>
+      <p style="color: #475569; max-width: 700px; margin: 0 auto 2.5rem">
+        Karena hidup anak SMK tuh nggak cuma ngoding, tapi juga ngatur waktu
+        dengan gaya.
+      </p>
 
-    
+      <div class="container">
+        <a href="#ganjil" class="box">
+          <div class="emoji">📅</div>
+          <b>Minggu Ganjil</b>
+        </a>
+
+        <a href="#genap" class="box">
+          <div class="emoji">📅</div>
+          <b>Minggu Genap</b>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h2>PPLG<span>X-2</span></h2>
+          <p>
+            Kami adalah anak-anak PPLG X-2 — kreatif, kompak, dan bersemangat
+            membangun masa depan lewat teknologi dan karya digital.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h3>Menu</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#kenapa-kita-ada">Kenapa Kita Ada</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#struktur">Struktur</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h3>Hubungi Kami</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> SMK Wikrama Bogor, Indonesia
+          </p>
+          <p><i class="fas fa-envelope"></i> pplgx2@class.id</p>
+          <p><i class="fas fa-phone"></i> +62 877-4367-4815</p>
+
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 PPLG X-2.</p>
+      </div>
+    </footer>
+
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
     <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("show");
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
-
-      document
-        .querySelectorAll(".hero-img img, .card, .gallery img")
-        .forEach((el) => observer.observe(el));
-
+      // Navbar scroll effect (udah ada)
+      const navbar = document.getElementById("navbar");
       window.addEventListener("scroll", () => {
-        const navbar = document.getElementById("navbar");
-        if (window.scrollY > 50) {
-          navbar.classList.add("scrolled");
-        } else {
-          navbar.classList.remove("scrolled");
-        }
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
       });
 
-      window.addEventListener("load", () => {
-        document.querySelector(".hero-img img").classList.add("show");
+      // Footer fade-up animation on scroll
+      const footer = document.querySelector(".footer");
+      window.addEventListener("scroll", () => {
+        const rect = footer.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          footer.style.opacity = 1;
+          footer.style.transform = "translateY(0)";
+          footer.style.transition = "all 1.5s ease";
+        }
       });
     </script>
   </body>
